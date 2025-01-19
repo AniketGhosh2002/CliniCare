@@ -448,93 +448,99 @@ function displayReceipt() {
     
         //receipt content
         const receiptContent = document.getElementById('receipt-content');
-        receiptContent.innerHTML = `<div class="receipt-form-download" id="receipt-form-download" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc;  background-color: #fff">
-        <div style="text-align: center; font-size: 2.5rem; color: hwb(216 25% 19%);">
-            <i class="fa-solid fa-stethoscope"> CliniCare </i>
-        </div>
-        <h3 style="text-align: center; margin-top: 30px;">Order Details</h3>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        receiptContent.innerHTML = `
+        <div class="receipt-form-download container" id="receipt-form-download" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+            <div class="text-center mb-4" style="font-size: 2rem; color: #1e90ff;">
+                <i class="fa-solid fa-stethoscope"></i> CliniCare
+            </div>
+    <h3 class="text-center" style="margin-top: 20px; font-size: 1.5rem;">Order Details</h3>
+    <table class="table table-bordered table-sm mt-3">
+        <tbody>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Name:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${name}</td>
+                <td><strong>Name:</strong></td>
+                <td>${name}</td>
             </tr>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Phone:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${phone}</td>
+                <td><strong>Phone:</strong></td>
+                <td>${phone}</td>
             </tr>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Address:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${address}</td>
+                <td><strong>Address:</strong></td>
+                <td>${address}</td>
             </tr>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Payment Mode:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${payment}</td>
+                <td><strong>Payment Mode:</strong></td>
+                <td>${payment}</td>
             </tr>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Delivery Mode:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${delivery}</td>
+                <td><strong>Delivery Mode:</strong></td>
+                <td>${delivery}</td>
             </tr>
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>Time Slot:</strong></td>
-                <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${slotTime}</td>
+                <td><strong>Time Slot:</strong></td>
+                <td>${slotTime}</td>
             </tr>
-        </table>
-        
-        <h3 style="text-align: center; margin-top: 30px;">Medicine Details</h3>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-            <thead>
-                <tr>
-                    <th style="padding: 8px; border: 1px solid #ddd; background-color: #fff;">Medicine</th>
-                    <th style="padding: 8px; border: 1px solid #ddd; background-color: #fff;">Type</th>
-                    <th style="padding: 8px; border: 1px solid #ddd; background-color: #fff;">Price</th>
-                    <th style="padding: 8px; border: 1px solid #ddd; background-color: #fff;">Quantity</th>
-                    <th style="padding: 8px; border: 1px solid #ddd; background-color: #fff;">Total</th>
-                </tr>
-            </thead>
-            <tbody id="order-items">
-            </tbody>
-        </table>
-        </div>
+        </tbody>
+    </table>
+
+    <h3 class="text-center" style="margin-top: 30px; font-size: 1.5rem;">Medicine Details</h3>
+    <table class="table table-bordered table-sm mt-3">
+        <thead class="table-light">
+            <tr>
+                <th>Medicine</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="order-items">
+
+        </tbody>
+    </table>
+</div>
+
     `;
 
     const orderItemsTable = document.getElementById('order-items');
     cart.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${item.medicine}</td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${item.volume}</td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">₹${item.price}</td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">${item.quantity}</td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff">₹ ${item.price * item.quantity}</td>
+    <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: left; word-wrap: break-word;">${item.medicine}</td>
+    <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: center; word-wrap: break-word;">${item.volume}</td>
+    <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;">₹${item.price}</td>
+    <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: center;">${item.quantity}</td>
+    <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;">₹${item.price * item.quantity}</td>
         `;
         orderItemsTable.appendChild(row);
     });
 
         const totalBillRow = document.createElement('tr');
         totalBillRow.innerHTML = `
-            <td colspan="4" style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;"><strong>Total Bill:</strong></td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>₹ ${totalBill}</strong></td>
+    <td colspan="4" style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">Total Bill:</td>
+    <td style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">₹ ${totalBill}</td>
+
         `;
         orderItemsTable.appendChild(totalBillRow);
 
         const discountRow = document.createElement('tr');
         discountRow.innerHTML = `
-            <td colspan="4" style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;"><strong>Discount:</strong></td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>₹ ${discount}</strong></td>
+            <td colspan="4" style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">Discount:</td>
+    <td style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">₹ ${discount}</strong></td>
         `;
         orderItemsTable.appendChild(discountRow);
 
         const deliveryRow = document.createElement('tr');
         deliveryRow.innerHTML = `
-            <td colspan="4" style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;"><strong>Delivery Charges:</strong></td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>₹ ${deliveryCharge}</strong></td>
+            <td colspan="4" style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">Delivery Charge:</td>
+    <td style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">₹ ${deliveryCharge}</strong></td>
         `;
         orderItemsTable.appendChild(deliveryRow);
 
         const payBillRow = document.createElement('tr');
         payBillRow.innerHTML = `
-            <td colspan="4" style="padding: 8px; border: 1px solid #ddd; background-color: #fff; text-align: right;"><strong>Payable Amount:</strong></td>
-            <td style="padding: 8px; border: 1px solid #ddd; background-color: #fff"><strong>₹ ${payBill}</strong></td>
+            <td colspan="4" style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">Payable Amount:</td>
+    <td style="padding: 12px; border: 1px solid #ddd; background-color: #fff; text-align: right; font-weight: bold;">₹ ${payBill}</strong></td>
         `;
         orderItemsTable.appendChild(payBillRow);
 

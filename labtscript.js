@@ -92,63 +92,70 @@ document.addEventListener("DOMContentLoaded", function() {
         const slotTime = document.getElementById('slot-time').value;
         const labtest = findlabtest();
         const receiptHTML = `
-        <div class="receipt-form-download" id="receipt-form-download" style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc;">
-            <div style="text-align: center; font-size: 2.5rem; color: hwb(216 25% 19%);">
-            <i class="fa-solid fa-stethoscope"> CliniCare </i>
+        <div class="receipt-form-download container" id="receipt-form-download" style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+            <div class="text-center mb-4" style="font-size: 2rem; color: #1e90ff;">
+                <i class="fa-solid fa-stethoscope"></i> CliniCare
             </div>
-            <h3 style="text-align: center; margin-top: 30px;">Lab Test Details</h3>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Test:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${labtest.name}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Category:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${labtest.specialist}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Details:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${labtest.details}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Charges:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">₹ ${labtest.charges}</td>
-                </tr>
-            </table>
-            <h3 style="text-align: center; margin-top: 30px;">Patient Details</h3>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Patient Name:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${name}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${phone}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Age:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${age}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Gender:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${gender}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Blood Group:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${bloodGroup}</td>
-                </tr>
-                
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Appointment Date:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${slotDate}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 8px; border: 1px solid #ddd;"><strong>Time Slot:</strong></td>
-                    <td style="padding: 8px; border: 1px solid #ddd;">${slotTime}</td>
-                </tr>
-            </table>
+            <h3 class="text-center mb-3">Consultant Details</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td><strong>Consultant Name:</strong></td>
+                        <td>${labtest.name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Specialization:</strong></td>
+                        <td>${labtest.specialist}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Degree:</strong></td>
+                        <td>${labtest.details}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fees:</strong></td>
+                        <td>₹ ${labtest.charges}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <h3 class="text-center mb-3">Patient Details</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td><strong>Patient Name:</strong></td>
+                        <td>${name}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone:</strong></td>
+                        <td>${phone}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Age:</strong></td>
+                        <td>${age}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gender:</strong></td>
+                        <td>${gender}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blood Group:</strong></td>
+                        <td>${bloodGroup}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Appointment Date:</strong></td>
+                        <td>${slotDate}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time Slot:</strong></td>
+                        <td>${slotTime}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
         </div>
-    `;
+        `;
     
     receiptContent.innerHTML = receiptHTML;
     receiptSection.style.display = 'block';
